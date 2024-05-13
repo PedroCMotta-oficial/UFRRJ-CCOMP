@@ -28,9 +28,9 @@ void main(void) {
         done = check();    
     } while (done == ' ');
     if (done == 'X'){
-        printf("Ganhou!\n");
+        printf("Você ganhou!\n");
     } else {
-        printf("Perdeu!\n");
+        printf("Perdeu contra a IA!\n");
     }
     disp_matrix();
 }
