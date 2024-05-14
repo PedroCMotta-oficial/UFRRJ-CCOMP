@@ -4,16 +4,16 @@
 
 char matrix[3][3];
 
-char check(void);
-void init_matrix(void);
-void get_player_move(void);
-void get_computer_move(void);
-void disp_matrix(void);
+char check();
+void init_matrix();
+void get_player_move();
+void get_computer_move();
+void disp_matrix();
 
-void main(void) {
+void main() {
     char done;
-    printf("Jogo da veia (v1.0.00)\n");
-    printf("Contra o CPU.\n");
+    printf("Jogo da Velha\n");
+    printf("Contra o IA ;P\n");
 
     done = ' ';
     init_matrix();
@@ -28,14 +28,14 @@ void main(void) {
         done = check();    
     } while (done == ' ');
     if (done == 'X'){
-        printf("Você ganhou!\n");
+        printf("Você ganhou! PARABÉNS!!!!\n");
     } else {
-        printf("Perdeu contra a IA!\n");
+        printf("Perdeu! SE QUISER TENTE NOVAMENTE\n");
     }
     disp_matrix();
 }
 
-void init_matrix(void){
+void init_matrix(){
     int i, j;
     for(i = 0; i < 3; i++){
         for (j = 0; j < 3; j++){
@@ -44,10 +44,10 @@ void init_matrix(void){
     }
 }
 
-void get_player_move(void){
+void get_player_move(){
     int x, y;
 
-    printf("Digite, em coordenadas (x,y), onde gostaria de por o X:\n");
+    printf("Digite, em coordenadas (x,y) para fazer sua jogada. (Do 1 ao 3 e sem parênteses)\n");
     scanf("%d %d", &x, &y);
 
     x--;y--;
@@ -59,26 +59,7 @@ void get_player_move(void){
         matrix[x][y] = 'X';
     }
 }
-void get_computer_move(void) { 
-    /*int i, j;
-    for (i = 0; i < 3; i++){
-        for (j = 0; j < 3; j++){
-            if (matrix[i][j] == ' '){
-                break;
-            } 
-        }
-         if (matrix[i][j] == ' '){
-            break;
-        }
-    }
-    
-    if (i * j != 9){
-        matrix[i][j] = 'O';
-    } else {
-        printf("Empate!\n");
-        exit(0);
-    }    
-*/        
+void get_computer_move() { 
     int posx, posy, times = 0;
 
     for(int i = 0; i < 9; i++){
@@ -96,11 +77,11 @@ void get_computer_move(void) {
     if (times != 9) {
         matrix[posx][posy] = '0';
     } else {
-        printf("Empate!\n");
+        printf("Foi um Empate!\n");
         exit(0);
     }
 }
-void disp_matrix(void) {
+void disp_matrix() {
     int t;
     
     for(t=0; t < 3; t++) {
@@ -111,7 +92,7 @@ void disp_matrix(void) {
     }
     printf("\n");
 }
-char check(void) {
+char check() {
     int i;
 
     for (i = 0; i < 3; i++) {
